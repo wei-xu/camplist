@@ -1,8 +1,15 @@
-# Expo Router Example
+# Camplist App
 
-Use [`expo-router`](https://expo.github.io/router) to build native navigation using files in the `app/` directory.
+## Functionality
 
-## 🚀 How to use
+- create camping check list from all inventory
+- view checklist and mark checked/not-checked
+
+## TODO
+- change checkbox to square checkbox
+- prepare full inventory list
+
+## 🚀 Test
 
 ```sh
 npx create-expo-app -e with-router
