@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CheckBox from "@react-native-community/checkbox";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const ChecklistScreen = () => {
   const [items, setItems] = useState([]);
@@ -66,13 +66,21 @@ const ChecklistScreen = () => {
       style={styles.checkboxContainer}
       onPress={() => handleToggleCheckbox(item.id)}
     >
-      <View
-        style={[
-          styles.checkbox,
-          { backgroundColor: item.checked ? "#007AFF" : "#EFEFEF" },
-        ]}
-      >
-        {item.checked && <Text style={styles.checkmark}>✓</Text>}
+      <View>
+        {item.checked ? (
+          // <Text style={styles.checkmark}>✓</Text>
+          <MaterialCommunityIcons
+            name="checkbox-marked-outline"
+            size={24}
+            color="black"
+          />
+        ) : (
+          <MaterialCommunityIcons
+            name="checkbox-blank-outline"
+            size={24}
+            color="black"
+          />
+        )}
       </View>
       <Text style={styles.checkboxLabel}>{item.name}</Text>
     </TouchableOpacity>

@@ -2,14 +2,17 @@
 
 ## Functionality
 
-- create camping check list from all inventory
-- view checklist and mark checked/not-checked
+- browse camping item list from all inventory
+- save a checklist from selected items
+- view saved checklist in main page
 
 ## TODO
-- change checkbox to square checkbox
+- [x] change checkbox to square checkbox
 - beautify camplist
 - prepare full inventory list
 - [draggable flatlist] (https://github.com/computerjazz/react-native-draggable-flatlist)
+
+- fix package vulnerability 
 
 ## 🚀 Test
 
