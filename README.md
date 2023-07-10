@@ -7,7 +7,9 @@
 
 ## TODO
 - change checkbox to square checkbox
+- beautify camplist
 - prepare full inventory list
+- [draggable flatlist] (https://github.com/computerjazz/react-native-draggable-flatlist)
 
 ## 🚀 Test
 
