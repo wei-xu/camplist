@@ -7,7 +7,8 @@
 - view saved checklist in main page
 
 ## TODO
-- save a list for selected items on main page
+- [ ] create an inventory data for full inventory list
+- [ ] save a list for selected items on main page
 - [x] flatlist separator
 - [x] change checkbox to square checkbox
 - beautify camplist
