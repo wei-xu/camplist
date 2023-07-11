@@ -68,7 +68,6 @@ const ChecklistScreen = () => {
     >
       <View>
         {item.checked ? (
-          // <Text style={styles.checkmark}>✓</Text>
           <MaterialCommunityIcons
             name="checkbox-marked-outline"
             size={24}
@@ -82,7 +81,7 @@ const ChecklistScreen = () => {
           />
         )}
       </View>
-      <Text style={styles.checkboxLabel}>{item.name}</Text>
+      <Text style={styles.inventoryName}>{item.name}</Text>
     </TouchableOpacity>
   );
 
@@ -107,6 +106,8 @@ const ChecklistScreen = () => {
     }
   };
 
+  const renderSeparator = () => <View style={styles.separator} />;
+
   return (
     <SafeAreaView
       style={{
@@ -124,10 +125,11 @@ const ChecklistScreen = () => {
           data={items}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
+          ItemSeparatorComponent={renderSeparator}
           contentContainerStyle={styles.flatlistContainer}
         />
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-          <Text style={styles.submitButtonText}>Submit</Text>
+          <Text style={styles.submitButtonText}>Save Selection</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>
@@ -145,24 +147,14 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 12,
+    // marginBottom: 12,
+    height: 50
   },
-  checkboxLabel: {
+  inventoryName: {
     marginLeft: 8,
     fontSize: 16,
-  },
-  checkbox: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 2,
-    borderColor: "#999",
-    justifyContent: "center",
     alignItems: "center",
-  },
-  checkmark: {
-    color: "#fff",
-    fontSize: 14,
+    justifyContent: "center"
   },
   submitButton: {
     backgroundColor: "#007AFF",
@@ -175,6 +167,10 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  separator: {
+    height: 1,
+    backgroundColor: 'grey',
   },
 });
 

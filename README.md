@@ -7,7 +7,8 @@
 - view saved checklist in main page
 
 ## TODO
-- [ ] flatlist separator
+- save a list for selected items on main page
+- [x] flatlist separator
 - [x] change checkbox to square checkbox
 - beautify camplist
 - prepare full inventory list
