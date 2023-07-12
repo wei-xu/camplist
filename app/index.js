@@ -32,6 +32,7 @@ const mylist = () => {
             headerRight: () => <Button title="Add" onPress={handleAdd} />,
           }}
         />
+        
         <Text>mylist</Text>
       </View>
     </SafeAreaView>

@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import React, { useEffect, useState } from "react";
 import {
   FlatList,
@@ -10,17 +10,21 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { data } from "../inventory/data.json";
 
 const ChecklistScreen = () => {
-  const [items, setItems] = useState([]);
+  const [fullItemList, setFullItemList] = useState([]);
 
+  const router = useRouter();
   useEffect(() => {
-    fetchItemsFromStorage();
+    // fetchItemsFromStorage();
+    initializeItems();
   }, []);
 
   const fetchItemsFromStorage = async () => {
     try {
       const storedItems = await AsyncStorage.getItem("checklistItems");
+
       if (storedItems !== null) {
         const parsedItems = JSON.parse(storedItems);
 
@@ -39,16 +43,19 @@ const ChecklistScreen = () => {
     }
   };
 
-  const saveItemsToStorage = async () => {
+  const saveItemsToStorage = async (selectedItems) => {
     try {
-      await AsyncStorage.setItem("checklistItems", JSON.stringify(items));
+      await AsyncStorage.setItem(
+        `app-camplist-${Date.now()}`,
+        JSON.stringify(selectedItems)
+      );
     } catch (error) {
       console.log("Error saving checklist items:", error);
     }
   };
 
   const handleToggleCheckbox = (itemId) => {
-    setItems((prevItems) =>
+    setFullItemList((prevItems) =>
       prevItems.map((item) =>
         item.id === itemId ? { ...item, checked: !item.checked } : item
       )
@@ -56,9 +63,10 @@ const ChecklistScreen = () => {
   };
 
   const handleSubmit = () => {
-    const selectedItems = items.filter((item) => item.checked);
+    const selectedItems = fullItemList.filter((item) => item.checked);
     console.log("Selected items:", selectedItems);
     // navigation.navigate('SecondScreen', { selectedItems });
+    router.replace("/");
   };
 
   const renderItem = ({ item }) => (
@@ -85,29 +93,24 @@ const ChecklistScreen = () => {
     </TouchableOpacity>
   );
 
-  useEffect(() => {
-    saveItemsToStorage();
-  }, [items]);
+  // useEffect(() => {
+  //   // saveItemsToStorage();
+  //   // AsyncStorage.removeItem("checklistItems");
+  // }, [items]);
 
   const initializeItems = async () => {
-    const initialItems = [
-      { id: 1, name: "Test Item 1", checked: false },
-      { id: 2, name: "Test Item 2", checked: false },
-      { id: 3, name: "Test Item 3", checked: false },
-    ];
-    setItems(initialItems);
-    try {
-      await AsyncStorage.setItem(
-        "checklistItems",
-        JSON.stringify(initialItems)
-      );
-    } catch (error) {
-      console.log("Error initializing checklist items:", error);
-    }
+    const itemlist = Object.values(data).flat();
+
+    const initialItems = itemlist.map((itemName, index) => ({
+      id: index,
+      name: itemName,
+      checked: false,
+    }));
+
+    setFullItemList(initialItems);
   };
 
   const renderSeparator = () => <View style={styles.separator} />;
-
   return (
     <SafeAreaView
       style={{
@@ -122,15 +125,19 @@ const ChecklistScreen = () => {
           }}
         />
         <FlatList
-          data={items}
+          data={fullItemList}
           renderItem={renderItem}
           keyExtractor={(item) => item.id.toString()}
           ItemSeparatorComponent={renderSeparator}
           contentContainerStyle={styles.flatlistContainer}
         />
-        <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
-          <Text style={styles.submitButtonText}>Save Selection</Text>
-        </TouchableOpacity>
+        {fullItemList.filter((item) => item.checked).length != 0 ? (
+          <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
+            <Text style={styles.submitButtonText}>Save Selection</Text>
+          </TouchableOpacity>
+        ) : (
+          <></>
+        )}
       </View>
     </SafeAreaView>
   );
@@ -147,14 +154,14 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // marginBottom: 12,
-    height: 50
+    minHeight: 50,
   },
   inventoryName: {
     marginLeft: 8,
+    marginRight: 8,
     fontSize: 16,
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
   },
   submitButton: {
     backgroundColor: "#007AFF",
@@ -170,7 +177,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: 1,
-    backgroundColor: 'grey',
+    backgroundColor: "grey",
   },
 });
 
