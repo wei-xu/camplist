@@ -8,8 +8,10 @@
 
 ## TODO
 - [ ] redirect to new list page when no lists are available
+- [ ] add picture to inventory items
 - [ ] edit saved list name
-- [ ][draggable flatlist] (https://github.com/computerjazz/react-native-draggable-flatlist)
+- [ ] allow adding customed camping item
+- [ ] [draggable flatlist] (https://github.com/computerjazz/react-native-draggable-flatlist)
 - [x] create an inventory data for full inventory list
 - [x] save a list for selected items on main page
 - [x] flatlist separator
