@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { Link, Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   Button,
@@ -155,6 +155,12 @@ const mylist = () => {
           keyExtractor={(item) => item.toString()}
           ItemSeparatorComponent={renderSeparator}
           contentContainerStyle={styles.flatlistContainer}
+          ListEmptyComponent={() => (
+            <View style={styles.emptyView}>
+              <Link href="/new-list">
+                <Text style={styles.emptyText}>List Empty, Click to browse items</Text></Link>
+            </View>
+          )}
         />
       </View>
     </SafeAreaView>
@@ -169,6 +175,12 @@ const styles = StyleSheet.create({
   flatlistContainer: {
     paddingBottom: 12,
   },
+  emptyView: {
+    alignItems: 'center',
+  },
+  emptyText: {
+    color: '#007AFF', // default ios button text color
+  },
   checkboxContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -178,7 +190,7 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginRight: 8,
     fontSize: 16,
-    flex: 1
+    flex: 1,
     // alignItems: "center",
     // justifyContent: "center",
   },
