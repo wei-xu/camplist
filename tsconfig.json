@@ -1,0 +1,17 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    // "strict": true, this will enforce syntax highlight for typing
+    "paths": {
+      "@/*": [
+        "./*"
+      ]
+    }
+  },
+  // "include": [
+  //   "**/*.ts",
+  //   "**/*.tsx",
+  //   ".expo/types/**/*.ts",
+  //   "expo-env.d.ts"
+  // ]
+}

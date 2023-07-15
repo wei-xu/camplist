@@ -1,0 +1,74 @@
+{
+  "data": {
+    "Shelter": [
+      "Tent",
+      "Sleeping bag",
+      "Sleeping pad",
+      "Hammock",
+      "Tarp or footprint",
+      "Tent stakes",
+      "Tent repair kit"
+    ],
+    "Cooking and Food": [
+      "Camp stove",
+      "Fuel canisters",
+      "Cookware set",
+      "Utensils (spoons, forks, knives)",
+      "Plates and bowls",
+      "Cups or mugs",
+      "Water bottles",
+      "Cooler or ice chest",
+      "Food storage containers",
+      "Cooking utensils (spatula, tongs, etc.)",
+      "Portable grill or fire pit",
+      "Fire starters or matches"
+    ],
+    "Hydration and Water": [
+      "Water filter or purifier",
+      "Water storage containers (bottles, bladders)",
+      "Water treatment tablets or drops",
+      "Water reservoir or hydration pack"
+    ],
+    "Clothing and Personal Items": [
+      "Hiking boots or shoes",
+      "Sandals or camp shoes",
+      "Socks (wool or synthetic)",
+      "Pants or shorts",
+      "Shirts (long-sleeve and short-sleeve)",
+      "Jacket or raincoat",
+      "Hat or cap",
+      "Sunglasses",
+      "Gloves or mittens",
+      "Underwear",
+      "Swimwear",
+      "Personal hygiene items (toothbrush, toothpaste, soap, etc.)",
+      "Towel",
+      "Sunscreen",
+      "Insect repellent",
+      "First aid kit"
+    ],
+    "Sleeping and Comfort": [
+      "Camping pillow",
+      "Camp chair or stool",
+      "Camp table",
+      "Lantern or camp light",
+      "Lantern fuel or batteries",
+      "Sleeping bag liner",
+      "Earplugs",
+      "Eye mask",
+      "Camp shower or portable shower bag",
+      "Camp towel"
+    ],
+    "Safety and Emergency": [
+      "First aid kit",
+      "Emergency blanket",
+      "Whistle",
+      "Signal mirror",
+      "Fire extinguisher",
+      "Emergency shelter",
+      "Survival knife or multi-tool",
+      "Portable charger or power bank",
+      "Emergency radio"
+    ]
+  }
+}

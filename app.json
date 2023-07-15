@@ -5,6 +5,11 @@
       "bundler": "metro"
     },
     "name": "camplist",
-    "slug": "camplist"
+    "slug": "camplist",
+    "orientation": "portrait",
+    "experiments": {
+      "tsconfigPaths": true,
+      "typedRoutes": true
+    }
   }
 }
